@@ -1,5 +1,5 @@
-* FFT-S2T5
-CS 2043: A student project aimed at creating a family financial tracker
+* Family Financial Tracker
+A project aimed at creating a family financial tracker
 
 * Building
 
@@ -17,7 +17,7 @@ There is no need to install any build dependencies, they will be installed autom
 
 #+end_src
 
-** Mac,Linux, *BSD
+** Mac and Linux
 #+begin_src sh
 
   ./gradlew testMerge # Run all tests
@@ -28,20 +28,3 @@ There is no need to install any build dependencies, they will be installed autom
   ./gradlew :app:dependencies
 
 #+end_src
-
-** Building for Deliverable 3a
-
-*** Windows
-#+begin_src sh
-  git checkout v1.0.0
-  gradlew.bat testMerge
-  gradlew.bat run
-#+end_src
-
-*** Mac, Linux, *BSD
-#+begin_src sh
-  git checkout v1.0.0
-  ./gradlew testMerge
-  ./gradlew run
-#+end_src
-
