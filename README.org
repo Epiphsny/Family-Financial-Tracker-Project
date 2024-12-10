@@ -1,0 +1,47 @@
+* FFT-S2T5
+CS 2043: A student project aimed at creating a family financial tracker
+
+* Building
+
+There is no need to install any build dependencies, they will be installed automatically by gradle
+
+** Windows Commands 
+#+begin_src sh
+
+  gradlew.bat testMerge # Run all tests
+  gradlew.bat build # Build and run some tests
+  gradlew.bat run # Build, run and test the application
+
+  # To audit dependencies run
+  gradlew.bat :app:dependencies
+
+#+end_src
+
+** Mac,Linux, *BSD
+#+begin_src sh
+
+  ./gradlew testMerge # Run all tests
+  ./gradlew build # Build and run some tests
+  ./gradlew run # Build, run and test the application
+
+  # To audit dependencies run
+  ./gradlew :app:dependencies
+
+#+end_src
+
+** Building for Deliverable 3a
+
+*** Windows
+#+begin_src sh
+  git checkout v1.0.0
+  gradlew.bat testMerge
+  gradlew.bat run
+#+end_src
+
+*** Mac, Linux, *BSD
+#+begin_src sh
+  git checkout v1.0.0
+  ./gradlew testMerge
+  ./gradlew run
+#+end_src
+

@@ -1,0 +1,138 @@
+* Using Gradle
+
+** Running Application in the Terminal
+
+To run the app through the terminal use these commands (mac, linux)
+#+begin_src sh
+  ./gradlew build # builds the application
+  ./gradlew run # runs the application
+  ./gradlew test # runs tests on the application
+#+end_src
+
+for windows use these commands instead
+#+begin_src sh
+  gradlew.bat build
+  gradlew.bat run
+  gradlew.bat test
+#+end_src
+
+** Running Tests
+
+*** Tests Layout 
+
+There are 4 test commands, each can run tests tagged with certain attributes, these are fast, now and merge.
+
+**** Fast
+Fast tests are meant to be quick tests that are runed frequently, they are supposed to test if the application is working on a general sense.
+Ex:
+#+begin_src java
+  @Tag("fast")
+  @Test
+  public void simpleMethodCheacker(){
+      // Runs a method call and checks it's output
+  }
+#+end_src
+
+**** Merge
+Merge tests exist to ensure that any push to main is somewhat functional, to finish a pull request, all merge tests must pass.
+Ex:
+#+begin_src java
+  @Tag("merge")
+  @Test
+  public void classTest(){
+      // Runs through a series of subtest for a an entire class
+  }
+#+end_src
+
+**** Now
+These are temporary tests designed to allow quick testing of a current feature, the test itself does not need to be temporary only it's tag
+#+begin_src java
+  @Tag("now")
+  @Test
+  public void methodSanityCheck(){
+      // checks if method is working
+  }
+#+end_src
+
+**** Any
+This is not a tag, it represents the absence of a tag. Any represents non tagged test.
+
+*** Running Tests
+|-----------+------+-----+-------+-----|
+| Command   | fast | now | merge | any |
+|-----------+------+-----+-------+-----|
+| test      | Yes  | No  | No    | No  |
+| testNow   | No   | Yes | No    | No  |
+| testMerge | Yes  | No  | Yes   | No  |
+| testAll   | Yes  | Yes | Yes   | Yes |
+|-----------+------+-----+-------+-----|
+
+**** Windows
+#+begin_src sh
+  gradlew.bat testAll
+  gradlew.bat testNow
+  gradlew.bat testMerge
+  gradlew.bat test
+#+end_src
+
+
+**** *nix (linux, mac)
+#+begin_src sh
+ ./gradlew testAll
+ ./gradlew testNow
+ ./gradlew testMerge
+ ./gradlew test
+#+end_src
+
+* Eclipse 
+
+** Formatter
+Applying specific formatting rules is easy, here are the steps
+
+1. Click on the Window button 
+2. In Window click on Preferences
+3. Then Open Java -> Code Style -> Formatter
+4. You will see a field called Active Profile, click the Import button right bellow it.
+5. In the file dialogue goto our projects root, and click on the file .eclipse-java-google-style.xml
+6. After the file is importet, make sure your Active Profile is set to GoogleStyle
+7. Click the Apply and Close button 
+
+   
+** Gradle
+
+*** Adding run
+Guide to making eclipse use gradle to build
+
+1. Click on the drop down menu for the run button (the green one)
+2. Click on run configuration 
+3. There should be a task called gradle, click on it,
+4. Double click on it, it should open a new dialog
+5. Name it something like run  or Gradle run, it doesn't matter
+6. Click on the workspace button, located by Working Directory
+7. Click on the first result
+8. In gradle tasks add the task run
+9. Apply and close
+
+   
+
+*** Addig test cases
+
+To add a test to gradle follow the same steps as Adding run, but replace the run command with the command that you want to add.
+
+
+* VSCode
+
+** Gradle
+
+To setup gradle for vscode, follow these steps
+
+1. Install the plugin [[https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-gradle][Gradle for Java]]
+2. Open the gradle project
+3. Click on the elephent in the side bar
+4. Under ftt -> tasks ->  Verification you will find all test realted tasks
+5. Under ftt -> tasks -> application you will find the run command
+ 
+   
+** Formatter
+
+Try to install [[https://github.com/google/google-java-format][google-java-format]] and then the [[https://open-vsx.org/extension/ilkka/google-java-format][vscode plugin]].
